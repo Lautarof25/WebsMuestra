@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Proyectos Web | LautaDev</title>
+  <meta name="description" content="Colección de páginas web desarrolladas por LautaDev">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c0f;
+      --surface: #15151a;
+      --surface-hover: #1c1c24;
+      --border: #2a2a35;
+      --text: #f0f0f5;
+      --text-muted: #9a9aaa;
+      --accent: #7c6af0;
+      --accent-soft: rgba(124, 106, 240, 0.15);
+      --whatsapp: #25d366;
+      --radius: 16px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle gradient background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 106, 240, 0.18), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(124, 106, 240, 0.06), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header */
+    header {
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .badge svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    h1 {
+      font-size: clamp(1.85rem, 6vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fff 0%, #c8c0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding-bottom: 5rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #a78bfa);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(124, 106, 240, 0.35);
+      background: var(--surface-hover);
+      box-shadow: var(--shadow);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 300;
+      flex-grow: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .card-link:hover {
+      gap: 0.65rem;
+    }
+
+    .card-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .card-link:hover svg {
+      transform: translateX(2px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 0 2.5rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    footer .dot {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 50%;
+      margin: 0 0.6rem;
+      vertical-align: middle;
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+      width: 58px;
+      height: 58px;
+      background: var(--whatsapp);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+    }
+
+    .whatsapp-btn:active {
+      transform: scale(0.96);
+    }
+
+    .whatsapp-btn svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+    }
+
+    /* Pulse animation */
+    .whatsapp-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--whatsapp);
+      animation: pulse 2.2s ease-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1.55);
+        opacity: 0;
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .card,
+      .card-link,
+      .whatsapp-btn {
+        transition: none;
+      }
+      .whatsapp-btn::after {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        Proyectos web
+      </div>
+      <h1>Mis desarrollos</h1>
+      <p class="subtitle">Landing pages y sitios con diseño cuidado, pensados para destacar y convertir.</p>
+    </header>
+
+    <main class="grid">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <h2>Cm Ingles</h2>
+        <p>Landing educativa con estética moderna, mensaje claro y una propuesta visual que invita a explorar.</p>
+        <a href="https://lautarof25.github.io/CmIngles/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <h2>My English School BV</h2>
+        <p>Diseño pensado para una escuela de inglés con identidad sólida, confianza y enfoque comercial.</p>
+        <a href="https://lautarof25.github.io/MyEnglishSchoolBV/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <h2>Portafolio Profesional</h2>
+        <p>Una presentación elegante y personal para destacar experiencia, trayectoria y presencia profesional.</p>
+        <a href="https://lautarof25.github.io/portafolioProfesional/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v4l3 3"></path>
+          </svg>
+        </div>
+        <h2>Estudio Chucky Tattoo</h2>
+        <p>Landing con fuerte identidad visual, personalidad artística y una experiencia que resalta el estilo del estudio.</p>
+        <a href="https://lautarof25.github.io/EstudioChuckyTattoo/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+        <h2>Nails By Abru</h2>
+        <p>Diseño femenino, sofisticado y visualmente impactante, pensado para captar atención de inmediato.</p>
+        <a href="https://lautarof25.github.io/NailsByAbru/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <h2>Biko Inventor</h2>
+        <p>Página con carácter, creatividad y una propuesta que comunica con fuerza desde el inicio.</p>
+        <a href="https://lautarof25.github.io/BikoInventor/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+        </div>
+        <h2>Shopping Stores</h2>
+        <p>Propuesta con enfoque comercial, navegación limpia y una experiencia visual muy cuidada.</p>
+        <a href="https://lautarof25.github.io/shopping-stores/" target="_blank" rel="noopener noreferrer" class="card-link">
+          Ver proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </article>
+    </main>
+
+    <footer>
+      <a href="https://lautadev.netlify.app/" target="_blank" rel="noopener noreferrer">lautadev.netlify.app</a>
+      <span class="dot"></span>
+      <span style="color: var(--text-muted); font-size: 0.85rem;">Hecho con ❤️</span>
+    </footer>
+  </div>
+
+  <!-- WhatsApp floating button -->
+  <a
+    href="https://wa.me/541160382014"
+    class="whatsapp-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+    title="Escribime por WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.85 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</body>
+</html>
