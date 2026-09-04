@@ -1,0 +1,308 @@
+  :root {
+      --bg: #0c0c0f;
+      --surface: #15151a;
+      --surface-hover: #1c1c24;
+      --border: #2a2a35;
+      --text: #f0f0f5;
+      --text-muted: #9a9aaa;
+      --accent: #7c6af0;
+      --accent-soft: rgba(124, 106, 240, 0.15);
+      --whatsapp: #25d366;
+      --radius: 16px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  html {
+      scroll-behavior: smooth;
+  }
+
+  body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 106, 240, 0.18), transparent),
+          radial-gradient(ellipse 60% 40% at 100% 50%, rgba(124, 106, 240, 0.06), transparent);
+      pointer-events: none;
+      z-index: 0;
+  }
+
+  .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+  }
+
+  /* Header */
+  header {
+      padding: 3rem 0 2rem;
+      text-align: center;
+  }
+
+  .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+  }
+
+  .badge svg {
+      width: 14px;
+      height: 14px;
+  }
+
+  h1 {
+      font-size: clamp(1.85rem, 6vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fff 0%, #c8c0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+  }
+
+  .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 420px;
+      margin: 0 auto;
+  }
+
+  /* Grid */
+  .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-bottom: 5rem;
+  }
+
+  @media (min-width: 640px) {
+      .grid {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  @media (min-width: 960px) {
+      .grid {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+
+  /* Cards */
+  .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(124, 106, 240, 0.4);
+      background: var(--surface-hover);
+      box-shadow: var(--shadow);
+  }
+
+  .card-preview {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #1a1a22;
+  }
+
+  .card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-preview img {
+      transform: scale(1.04);
+  }
+
+  .card-preview::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(12, 12, 15, 0.5));
+      pointer-events: none;
+  }
+
+  .card-body {
+      padding: 1.25rem 1.35rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+  }
+
+  .card h2 {
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      letter-spacing: -0.01em;
+  }
+
+  .card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      flex-grow: 1;
+      margin-bottom: 1.1rem;
+  }
+
+  .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+  }
+
+  .card-link:hover {
+      gap: 0.65rem;
+  }
+
+  .card-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+  }
+
+  .card-link:hover svg {
+      transform: translateX(2px);
+  }
+
+  /* Footer */
+  footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 0 2.5rem;
+      text-align: center;
+  }
+
+  footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s ease;
+  }
+
+  footer a:hover {
+      color: var(--accent);
+  }
+
+  footer .dot {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 50%;
+      margin: 0 0.6rem;
+      vertical-align: middle;
+  }
+
+  /* Floating WhatsApp */
+  .whatsapp-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+      width: 58px;
+      height: 58px;
+      background: var(--whatsapp);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+  }
+
+  .whatsapp-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+  }
+
+  .whatsapp-btn:active {
+      transform: scale(0.96);
+  }
+
+  .whatsapp-btn svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+  }
+
+  .whatsapp-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--whatsapp);
+      animation: pulse 2.2s ease-out infinite;
+      z-index: -1;
+  }
+
+  @keyframes pulse {
+      0% {
+          transform: scale(1);
+          opacity: 0.5;
+      }
+
+      100% {
+          transform: scale(1.55);
+          opacity: 0;
+      }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+      .card,
+      .card-link,
+      .whatsapp-btn,
+      .card-preview img {
+          transition: none;
+      }
+
+      .whatsapp-btn::after {
+          animation: none;
+      }
+  }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,319 +9,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0c0c0f;
-      --surface: #15151a;
-      --surface-hover: #1c1c24;
-      --border: #2a2a35;
-      --text: #f0f0f5;
-      --text-muted: #9a9aaa;
-      --accent: #7c6af0;
-      --accent-soft: rgba(124, 106, 240, 0.15);
-      --whatsapp: #25d366;
-      --radius: 16px;
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    }
+  <link rel="stylesheet" href="style.css">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta name="description"
+    content="Portafolio de landing pages optimizadas para emprendimientos locales. Diseño moderno, rápido y adaptable para potenciar tu negocio online." />
+  <meta name="keywords"
+    content="landing pages Argentina, diseño web para emprendimientos, páginas de muestra, desarrollo web local, portafolio de landing pages, sitios optimizados" />
+  <meta name="author" content="Lautaro – WebsMuestra" />
 
-    html {
-      scroll-behavior: smooth;
-    }
+  <!-- Open Graph / Facebook / Instagram -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Landing Pages para Emprendimientos Locales – WebsMuestra" />
+  <meta property="og:description"
+    content="Descubre ejemplos de landing pages creadas para negocios locales. Inspiración y referencia para tu propio sitio web." />
+  <meta property="og:image" content="https://lautarof25.github.io/WebsMuestra/og_image.jpg" />
+  <meta property="og:site_name" content="WebsMuestra" />
+  <meta property="og:url" content="https://lautarof25.github.io/WebsMuestra/" />
 
-    body {
-      font-family: 'Outfit', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Landing Pages para Emprendimientos Locales – WebsMuestra" />
+  <meta property="twitter:description"
+    content="Ejemplos de landing pages optimizadas para negocios locales. Diseño moderno y adaptable." />
+  <meta property="twitter:image" content="https://lautarof25.github.io/WebsMuestra/og_image.jpg" />
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 106, 240, 0.18), transparent),
-        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(124, 106, 240, 0.06), transparent);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* Header */
-    header {
-      padding: 3rem 0 2rem;
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-      letter-spacing: 0.02em;
-    }
-
-    .badge svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    h1 {
-      font-size: clamp(1.85rem, 6vw, 2.75rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, #fff 0%, #c8c0ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      font-weight: 300;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    /* Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      padding-bottom: 5rem;
-    }
-
-    @media (min-width: 640px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 960px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* Cards */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(124, 106, 240, 0.4);
-      background: var(--surface-hover);
-      box-shadow: var(--shadow);
-    }
-
-    .card-preview {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #1a1a22;
-    }
-
-    .card-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .card:hover .card-preview img {
-      transform: scale(1.04);
-    }
-
-    .card-preview::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(12, 12, 15, 0.5));
-      pointer-events: none;
-    }
-
-    .card-body {
-      padding: 1.25rem 1.35rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .card h2 {
-      font-size: 1.12rem;
-      font-weight: 600;
-      margin-bottom: 0.45rem;
-      letter-spacing: -0.01em;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-weight: 300;
-      flex-grow: 1;
-      margin-bottom: 1.1rem;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--accent);
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: gap 0.2s ease;
-    }
-
-    .card-link:hover {
-      gap: 0.65rem;
-    }
-
-    .card-link svg {
-      width: 16px;
-      height: 16px;
-      transition: transform 0.2s ease;
-    }
-
-    .card-link:hover svg {
-      transform: translateX(2px);
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.75rem 0 2.5rem;
-      text-align: center;
-    }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 400;
-      transition: color 0.2s ease;
-    }
-
-    footer a:hover {
-      color: var(--accent);
-    }
-
-    footer .dot {
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      background: var(--border);
-      border-radius: 50%;
-      margin: 0 0.6rem;
-      vertical-align: middle;
-    }
-
-    /* Floating WhatsApp */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 100;
-      width: 58px;
-      height: 58px;
-      background: var(--whatsapp);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      text-decoration: none;
-    }
-
-    .whatsapp-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
-    }
-
-    .whatsapp-btn:active {
-      transform: scale(0.96);
-    }
-
-    .whatsapp-btn svg {
-      width: 30px;
-      height: 30px;
-      fill: #fff;
-    }
-
-    .whatsapp-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: var(--whatsapp);
-      animation: pulse 2.2s ease-out infinite;
-      z-index: -1;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 0.5;
-      }
-      100% {
-        transform: scale(1.55);
-        opacity: 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .card,
-      .card-link,
-      .whatsapp-btn,
-      .card-preview img {
-        transition: none;
-      }
-      .whatsapp-btn::after {
-        animation: none;
-      }
-    }
-  </style>
 </head>
+
 <body>
   <div class="container">
     <header>
       <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
@@ -334,20 +54,15 @@
       <!-- Card 1: Cm Ingles -->
       <article class="card">
         <div class="card-preview">
-          <img
-            src="CmIngles.avif"
-            alt="Vista previa de Cm Inglés"
-            loading="lazy"
-            width="600"
-            height="380"
-          >
+          <img src="CmIngles.avif" alt="Vista previa de Cm Inglés" loading="lazy" width="600" height="380">
         </div>
         <div class="card-body">
           <h2>Cm Ingles</h2>
           <p>Landing educativa con estética moderna, mensaje claro y una propuesta visual que invita a explorar.</p>
           <a href="https://lautarof25.github.io/CmIngles/" target="_blank" rel="noopener noreferrer" class="card-link">
             Ver proyecto
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -358,20 +73,17 @@
       <!-- Card 2: My English School BV -->
       <article class="card">
         <div class="card-preview">
-          <img
-            src="MyEnglishSchoolBV.avif"
-            alt="Vista previa de My English School BV"
-            loading="lazy"
-            width="600"
-            height="380"
-          >
+          <img src="MyEnglishSchoolBV.avif" alt="Vista previa de My English School BV" loading="lazy" width="600"
+            height="380">
         </div>
         <div class="card-body">
           <h2>My English School BV</h2>
           <p>Diseño pensado para una escuela de inglés con identidad sólida, confianza y enfoque comercial.</p>
-          <a href="https://lautarof25.github.io/MyEnglishSchoolBV/" target="_blank" rel="noopener noreferrer" class="card-link">
+          <a href="https://lautarof25.github.io/MyEnglishSchoolBV/" target="_blank" rel="noopener noreferrer"
+            class="card-link">
             Ver proyecto
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -382,20 +94,17 @@
       <!-- Card 3: Portafolio Profesional -->
       <article class="card">
         <div class="card-preview">
-          <img
-            src="PortafolioProfesional.avif"
-            alt="Vista previa de Portafolio Profesional"
-            loading="lazy"
-            width="600"
-            height="380"
-          >
+          <img src="PortafolioProfesional.avif" alt="Vista previa de Portafolio Profesional" loading="lazy" width="600"
+            height="380">
         </div>
         <div class="card-body">
           <h2>Portafolio Profesional</h2>
           <p>Una presentación elegante y personal para destacar experiencia, trayectoria y presencia profesional.</p>
-          <a href="https://lautarof25.github.io/portafolioProfesional/" target="_blank" rel="noopener noreferrer" class="card-link">
+          <a href="https://lautarof25.github.io/portafolioProfesional/" target="_blank" rel="noopener noreferrer"
+            class="card-link">
             Ver proyecto
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -406,20 +115,18 @@
       <!-- Card 4: Estudio Chucky Tattoo -->
       <article class="card">
         <div class="card-preview">
-          <img
-            src="EstudioChuckyTattoo.avif"
-            alt="Vista previa de Estudio Chucky Tattoo"
-            loading="lazy"
-            width="600"
-            height="380"
-          >
+          <img src="EstudioChuckyTattoo.avif" alt="Vista previa de Estudio Chucky Tattoo" loading="lazy" width="600"
+            height="380">
         </div>
         <div class="card-body">
           <h2>Estudio Chucky Tattoo</h2>
-          <p>Landing con fuerte identidad visual, personalidad artística y una experiencia que resalta el estilo del estudio.</p>
-          <a href="https://lautarof25.github.io/EstudioChuckyTattoo/" target="_blank" rel="noopener noreferrer" class="card-link">
+          <p>Landing con fuerte identidad visual, personalidad artística y una experiencia que resalta el estilo del
+            estudio.</p>
+          <a href="https://lautarof25.github.io/EstudioChuckyTattoo/" target="_blank" rel="noopener noreferrer"
+            class="card-link">
             Ver proyecto
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -430,20 +137,16 @@
       <!-- Card 5: Nails By Abru -->
       <article class="card">
         <div class="card-preview">
-          <img
-            src="NailsByAbru.avif"
-            alt="Vista previa de Nails By Abru"
-            loading="lazy"
-            width="600"
-            height="380"
-          >
+          <img src="NailsByAbru.avif" alt="Vista previa de Nails By Abru" loading="lazy" width="600" height="380">
         </div>
         <div class="card-body">
           <h2>Nails By Abru</h2>
           <p>Diseño femenino, sofisticado y visualmente impactante, pensado para captar atención de inmediato.</p>
-          <a href="https://lautarof25.github.io/NailsByAbru/" target="_blank" rel="noopener noreferrer" class="card-link">
+          <a href="https://lautarof25.github.io/NailsByAbru/" target="_blank" rel="noopener noreferrer"
+            class="card-link">
             Ver proyecto
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -454,20 +157,16 @@
       <!-- Card 6: Biko Inventor -->
       <article class="card">
         <div class="card-preview">
-          <img
-            src="BikoInventor.avif"
-            alt="Vista previa de Biko Inventor"
-            loading="lazy"
-            width="600"
-            height="380"
-          >
+          <img src="BikoInventor.avif" alt="Vista previa de Biko Inventor" loading="lazy" width="600" height="380">
         </div>
         <div class="card-body">
           <h2>Biko Inventor</h2>
           <p>Página con carácter, creatividad y una propuesta que comunica con fuerza desde el inicio.</p>
-          <a href="https://lautarof25.github.io/BikoInventor/" target="_blank" rel="noopener noreferrer" class="card-link">
+          <a href="https://lautarof25.github.io/BikoInventor/" target="_blank" rel="noopener noreferrer"
+            class="card-link">
             Ver proyecto
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -478,20 +177,16 @@
       <!-- Card 7: Shopping Stores -->
       <article class="card">
         <div class="card-preview">
-          <img
-            src="shopping-stores.avif"
-            alt="Vista previa de Shopping Stores"
-            loading="lazy"
-            width="600"
-            height="380"
-          >
+          <img src="shopping-stores.avif" alt="Vista previa de Shopping Stores" loading="lazy" width="600" height="380">
         </div>
         <div class="card-body">
           <h2>Shopping Stores</h2>
           <p>Propuesta con enfoque comercial, navegación limpia y una experiencia visual muy cuidada.</p>
-          <a href="https://lautarof25.github.io/shopping-stores/" target="_blank" rel="noopener noreferrer" class="card-link">
+          <a href="https://lautarof25.github.io/shopping-stores/" target="_blank" rel="noopener noreferrer"
+            class="card-link">
             Ver proyecto
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -508,17 +203,13 @@
   </div>
 
   <!-- WhatsApp floating button -->
-  <a
-    href="https://wa.me/541160382014"
-    class="whatsapp-btn"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Contactar por WhatsApp"
-    title="Escribime por WhatsApp"
-  >
+  <a href="https://wa.me/541160382014" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp" title="Escribime por WhatsApp">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.85 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.85 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
     </svg>
   </a>
 </body>
+
 </html>
